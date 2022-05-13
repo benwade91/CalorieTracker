@@ -22,7 +22,7 @@
       <h1 id="calAllowed">0</h1>
     </div>
     <form id="calorieGoalForm">
-      <input id="setGoalInput" type="number" placeholder="Enter daily calorie target">
+      <input id="setGoalInput" type="number" step="0.01" placeholder="Enter daily calorie target">
       <button class="btn btn-primary" id="setGoal">Set Goal</button>
     </form>
     <div id="macros">
@@ -33,11 +33,11 @@
   </div>
 
   <form id="macroForm">
-    <input type="number" placeholder="calories" id="calorieForm" required>
-    <input type="number" placeholder="fat" id="fatForm" required>
-    <input type="number" placeholder="carbs" id="carbForm" required>
-    <input type="number" placeholder="protein" id="proteinForm" required>
-    <button type="submit" class="btn btn-primary" id="submitMeal">Submit</button>
+    <input type="number" step="0.01" placeholder="calories" id="calorieForm" required>
+    <input type="number" step="0.01" placeholder="fat" id="fatForm" required>
+    <input type="number" step="0.01" placeholder="carbs" id="carbForm" required>
+    <input type="number" step="0.01" placeholder="protein" id="proteinForm" required>
+    <button type="submit" step="0.01" class="btn btn-primary" id="submitMeal">Submit</button>
   </form>
 
   <div id="meals">
