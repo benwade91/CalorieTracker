@@ -4,6 +4,7 @@ const setGoalInput = document.querySelector("#setGoalInput");
 const setGoalBtn = document.querySelector("#setGoal");
 
 // elements for displaying macros consumed
+const macros = document.querySelector("#macros");
 const calGoal = document.querySelector("#calAllowed");
 const calConsumed = document.querySelector("#calConsumed");
 const fat = document.querySelector("#fat");
@@ -121,6 +122,8 @@ const deleteMeal = (id) => {
 if (localStore.target) {
   calGoal.innerHTML = localStore.target;
   calGoalForm.style.display = "none";
+  macros.style.display = "block";
+  macroForm.style.display = 'flex';
 }
 
 populateMacros();

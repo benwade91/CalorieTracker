@@ -1,6 +1,7 @@
 .head{
-  height: 30vh;
+  height: 40vh;
   width: 100vw;
+  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,19 +10,25 @@
 .calorieCount {
   display: flex;
 }
-#calorieForm{
+
+#calorieGoalForm{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5vh;
+}
+#calorieGoalForm input{
+  margin-bottom: 1vh;
 }
 #setGoal {
   width: fit-content;
 }
 #macros{
   text-align: center;
+  display: none;
 }
 #macroForm{
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
