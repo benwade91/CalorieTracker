@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "https://benwade.dev/CalorieTracker/",
-  "start_url": "/CalorieTracker",
+  "start_url": "https://benwade.dev/CalorieTracker/",
   "icons": [
     {
       "src": "./images/180.png",
