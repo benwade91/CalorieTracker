@@ -6,28 +6,28 @@
   "display": "standalone",
   "orientation": "portrait",
   "scope": "https://benwade.dev/CalorieTracker/",
-  "start_url": "/",
+  "start_url": "/CalorieTracker",
   "icons": [
     {
-      "src": "/images/180.png",
+      "src": "./images/180.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/144.png",
+      "src": "./images/144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/192.png",
+      "src": "./images/192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/192.png",
+      "src": "./images/192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
