@@ -23,6 +23,15 @@
 #setGoal {
   width: fit-content;
 }
+#qr-reader{
+  margin: 0 auto 10px;
+  height: fit-content;
+  border: none;
+  display: none;
+}
+#qr-reader img, #qr-reader__dashboard_section_swaplink {
+  display: none;
+}
 #macros{
   text-align: center;
   display: none;
@@ -35,6 +44,9 @@
 }
 #macroForm input{
   margin-bottom: 5px;
+}
+#showScanner{
+  margin: 5px;
 }
 
 #meals{

@@ -13,11 +13,13 @@ const protein = document.querySelector("#protein");
 
 // elements for submitting meal
 const macroForm = document.querySelector("#macroForm");
+const servingsForm = document.querySelector("#servingsForm");
 const calorieForm = document.querySelector("#calorieForm");
 const fatForm = document.querySelector("#fatForm");
 const carbForm = document.querySelector("#carbForm");
 const proteinForm = document.querySelector("#proteinForm");
 const submitMeal = document.querySelector("#submitMeal");
+const showScanner = document.querySelector("#showScanner");
 
 // display past meals
 const mealsContainer = document.querySelector("#meals");
@@ -83,10 +85,10 @@ const displayMeals = () => {
 
 const addMeal = () => {
   const newMeal = new Meal();
-  newMeal.calories = Number(calorieForm.value)
-  newMeal.fat = Number(fatForm.value)
-  newMeal.carbs = Number(carbForm.value)
-  newMeal.protein = Number(proteinForm.value)
+  newMeal.calories = Number(calorieForm.value * (servingsForm.value || 1))
+  newMeal.fat = Number(fatForm.value * (servingsForm.value || 1))
+  newMeal.carbs = Number(carbForm.value * (servingsForm.value || 1))
+  newMeal.protein = Number(proteinForm.value * (servingsForm.value || 1))
   localStore.meals.push(newMeal);
   updateStore();
   location.reload();
@@ -113,10 +115,19 @@ const populateMacros = () => {
 }
 
 const deleteMeal = (id) => {
-  localStore.meals = localStore.meals.filter(meal =>meal.id !== id)
+  localStore.meals = localStore.meals.filter(meal => meal.id !== id)
   updateStore();
   location.reload();
 }
+
+const populateForm = (data) => {
+  calorieForm.value = data[0]
+  fatForm.value = data[1]
+  carbForm.value = data[2]
+  proteinForm.value = data[3]
+  document.querySelector("#qr-reader").style.display = "none"
+}
+
 
 // check for existing information in local storage
 if (localStore.target) {
@@ -137,7 +148,43 @@ setGoalBtn.addEventListener("click", (e) => {
   location.reload();
 })
 
+showScanner.addEventListener("click", (e)=>{
+  e.preventDefault();
+  document.querySelector("#qr-reader").style.display = "block"
+})
+
 macroForm.addEventListener("submit", (e) => {
   e.preventDefault();
   addMeal();
 });
+
+var resultContainer = document.getElementById('qr-reader-results');
+var lastResult, countResults = 0;
+
+function onScanSuccess(decodedText, decodedResult) {
+  if (decodedText !== lastResult) {
+    ++countResults;
+    lastResult = decodedText;
+    // Handle on success condition with the decoded message.
+    getApiData(decodedText)
+    console.log(`Scan result ${decodedText}`);
+  }
+}
+
+var html5QrcodeScanner = new Html5QrcodeScanner(
+  "qr-reader", {
+    fps: 10,
+    qrbox: 250
+  });
+html5QrcodeScanner.render(onScanSuccess);
+
+const getApiData = async (url) => {
+  let productDetails
+  fetch(`https://world.openfoodfacts.org/api/v2/product/${url}`)
+    .then(response => response.json())
+    .then(data => {
+      productDetails = [data.product.nutriments["energy-kcal_serving"], data.product.nutriments.fat_serving, data.product.nutriments.carbohydrates_serving, data.product.nutriments.proteins_serving, ]
+      populateForm(productDetails);
+    })
+    .catch(console.log("no product found"))
+}
