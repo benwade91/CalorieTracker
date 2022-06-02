@@ -23,7 +23,7 @@
 #setGoal {
   width: fit-content;
 }
-#qr-reader{
+/* #qr-reader{
   margin: 0 auto 10px;
   height: fit-content;
   border: none;
@@ -31,7 +31,7 @@
 }
 #qr-reader img, #qr-reader__dashboard_section_swaplink {
   display: none;
-}
+} */
 #macros{
   text-align: center;
   display: none;
