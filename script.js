@@ -147,10 +147,11 @@ setGoalBtn.addEventListener("click", (e) => {
   updateStore();
   location.reload();
 })
-
+let showScannerWindow = false;
 showScanner.addEventListener("click", (e)=>{
   e.preventDefault();
-  document.querySelector("#qr-reader").style.display = "block"
+  document.querySelector("#qr-reader").style.display = showScannerWindow ? "none" : "block"
+  showScannerWindow = !showScannerWindow
 })
 
 macroForm.addEventListener("submit", (e) => {
@@ -167,7 +168,7 @@ function onScanSuccess(decodedText, decodedResult) {
       console.log(`Scan result ${decodedText}`);
 }
 var html5QrcodeScanner = new Html5QrcodeScanner(
-"qr-reader", { fps: 10, qrbox: 250 });
+"qr-reader", { fps: 10, qrbox: 300 });
 html5QrcodeScanner.render(onScanSuccess);
 
 const getApiData = async (url) => {
